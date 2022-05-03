@@ -1,6 +1,10 @@
 <?php
 
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+Use App\User;
+Use App\Permisos\Models\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +24,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/prueba', function(){
+
+    return  Role::create ([
+    'nombre' => 'Admin',
+    'slug' => 'admin',
+    'descripcion' => 'Administrador',
+    'full-access' => 'yes',
+    ]);
+
+}
+);
