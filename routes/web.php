@@ -48,7 +48,13 @@ Route::get('/prueba', function(){
          ]);
 */
          $user = User::find(1);
-         return $user;
+        // $user->roles()->attach([1,3]); //attach crea registros 
+        //$user->roles()->detach([1]); //detach elimina
+        //$user->roles()->detach([3]);
+        //$user->roles()->sync([1]);// sync crea si no esta creado y elimina si esta creado y no en el vector
+        //$user->roles()->attach([1,2,3]); 
+        $user->roles()->sync([1,2]);
+         return $user->roles;
 
 
 }
