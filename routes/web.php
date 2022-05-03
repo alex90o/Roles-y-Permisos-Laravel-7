@@ -27,12 +27,29 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/prueba', function(){
 
+    // return  Role::create ([
+    // 'nombre' => 'Admin',
+    // 'slug' => 'admin',
+    // 'descripcion' => 'Administrador',
+    // 'full-access' => 'yes',
+    // ]);
+    //  return  Role::create ([
+    // 'nombre' => 'Guest',
+    // 'slug' => 'guest',
+    // 'descripcion' => 'guest',
+    // 'full-access' => 'no',
+    //  ]);
+/*
     return  Role::create ([
-    'nombre' => 'Admin',
-    'slug' => 'admin',
-    'descripcion' => 'Administrador',
-    'full-access' => 'yes',
-    ]);
+        'nombre' => 'test',
+        'slug' => 'test',
+        'descripcion' => 'test',
+        'full-access' => 'no',
+         ]);
+*/
+         $user = User::find(1);
+         return $user;
+
 
 }
 );
