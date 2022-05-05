@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        
             <div class="card">
                 <div class="card-header">
                     <h2>Lista de Roles</h2>
@@ -15,15 +15,15 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                    <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">nombre</th>
-                                <th scope="col">slug</th>
-                                <th scope="col">descripción</th>
-                                <th scope="col">full-access</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Slug</th>
+                                <th scope="col">Descripción</th>
+                                <th scope="col">Full-access</th>
                                 <th colspan=3></th>
                             </tr>
                         </thead>
@@ -35,25 +35,19 @@
                                 <td>{{$role->slug}}</td>
                                 <td>{{$role->descripcion}}</td>
                                 <td>{{$role['full-access']}}</td>
-                                
+                                <td><a class="btn btn-info" href="{{route('role.show',$role->id)}}">ver</a></td>
+                                <td><a class="btn btn-success" href="{{route('role.edit',$role->id)}}">editar</a></td>
+                                <td><a class="btn btn-danger" href="{{route('role.destroy',$role->id)}}">eliminar</a></td>
                                 @endforeach
                             </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td colspan="2">Larry the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
+            
                         </tbody>
                     </table>
+                    </div>
+                    {{$roles->links()}}
                 </div>
             </div>
-        </div>
+       
     </div>
 </div>
 @endsection
