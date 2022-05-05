@@ -137,7 +137,7 @@ class PermissionInfoSeeder extends Seeder
         $permission_all[] = $permiso->id;
 
          //tabla permissions_role
-         $roladmin->permissions()->sync($permission_all);
+         //$roladmin->permissions()->sync($permission_all);
 
     }
 }

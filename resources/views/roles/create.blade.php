@@ -10,7 +10,7 @@
                 </div>
 
                 <div class="card-body">
-                 
+                @include('custom.message') 
 
                     <form action="{{ route('role.store') }}" method="post">
                         @csrf
