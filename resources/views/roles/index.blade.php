@@ -10,13 +10,17 @@
                 </div>
 
                 <div class="card-body">
+                    <a href="{{route('role.create')}}"
+                    class="btn btn-primary float-right"
+                        >Crear</a>
+                    <br><br>    
                     @if(session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
                     <div class="table-responsive">
-                    <table class="table table-bordered">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
