@@ -22,10 +22,10 @@
                         <div class="container">
                             <h3>Requiere datos</h3>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                                <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="slug" placeholder="Slug">
+                                <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug">
                             </div>
 
                             <div class="form-group">
@@ -35,22 +35,33 @@
                             <hr>
                             <h3>Acceso Completo</h3>
                             <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="customRadioInline1" name="full-access"
+                                <input type="radio" id="fullaccessyes" name="full-access"
                                     class="custom-control-input" value="yes">
                                 <label class="custom-control-label" for="fullaccessyes">Si</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="customRadioInline2" name="full-access"
+                                <input type="radio" id="fullaccessno" name="full-access"
                                     class="custom-control-input" value="no" checked>
                                 <label class="custom-control-label" for="fullaccessno">No</label>
                             </div>
                             <hr>
                             <h3>Lista de Permisos</h3>
+
+                            @foreach($permisos as $permiso)
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                <label class="custom-control-label" for="customCheck1">Check this custom
-                                    checkbox</label>
+                                <input type="checkbox" class="custom-control-input" 
+                                id="permiso_{{$permiso->id}}"
+                                value="{{ $permiso->id}}" name="permiso[]">
+                                <label class="custom-control-label" for="permiso_{{$permiso->id}}">
+                                    {{ $permiso->id}}
+                                    -
+                                    {{ $permiso->nombre}}
+                                    <em>({{$permiso->descripcion}})</em>
+                                </label>
                             </div>
+                            @endforeach
+                            <hr>
+                            <input type="submit" class="btn btn-primary" value="Guardar">
 
                         </div>
 
