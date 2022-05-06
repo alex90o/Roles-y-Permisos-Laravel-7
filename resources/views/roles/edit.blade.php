@@ -13,7 +13,8 @@
                 @include('custom.message') 
 
                     <form action="{{ route('role.update', $role->id )}}" method="post">
-                        @method('PUT')
+                    @csrf    
+                    @method('PUT')
 
                         <div class="container">
                             <h3>Requiere datos</h3>
@@ -64,10 +65,13 @@
                                 <input type="checkbox" class="custom-control-input" 
                                 id="permiso_{{$permiso->id}}"
                                 value="{{ $permiso->id}}" name="permiso[]"
+                                
                                 @if(is_array (old('permiso')) && in_array("$permiso->id", old ('permiso')))
                                 checked
+                                @elseif(is_array ($permiso_rol) && in_array("$permiso->id", $permiso_rol))
+                                checked
                                 @endif>
-                                
+                               
                                 <label class="custom-control-label" for="permiso_{{$permiso->id}}">
                                     {{ $permiso->id}}
                                     -

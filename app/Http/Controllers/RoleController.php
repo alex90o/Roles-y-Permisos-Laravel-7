@@ -77,10 +77,15 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        return $role->permissions;
+        $permiso_rol=[];
+
+        foreach($role->permissions as $permiso){
+            $permiso_rol[]=$permiso->id;
+        }
+       // return $permiso_rol;
         $permisos = Permission::get();
 
-        return view('roles.edit', compact('permisos','role'));
+        return view('roles.edit', compact('permisos','role','permiso_rol'));
        
     }
 
@@ -91,9 +96,22 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Role $role)
     {
-        //
+        $request ->validate(
+            [
+                'nombre' => 'required|max:50|unique:roles,nombre,'.$role->id,
+                'slug' => 'required|max:50|unique:roles,slug,'.$role->id,
+                'full-access' => 'required|in:yes,no'
+            ]
+            );
+            $role -> update($request->all());
+
+            if( $request->get('permiso')){
+                $role ->permissions()->sync($request->get('permiso'));
+            }
+            return redirect()->route('role.index')
+            ->with('status_success', 'Rol actualizado con éxito');
     }
 
     /**
