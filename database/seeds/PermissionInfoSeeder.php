@@ -94,7 +94,7 @@ class PermissionInfoSeeder extends Seeder
          $roladmin->permissions()->sync($permission_all);
 
 
-           //permisos de los usuarios
+        //permisos de los usuarios
         $permiso = Permission::create([
             'nombre' => 'Lista de usuarios',
             'slug' => 'usuario.index',
@@ -102,7 +102,7 @@ class PermissionInfoSeeder extends Seeder
 
         ]);
         $permission_all[] = $permiso->id;
-        
+
         $permiso = Permission::create([
             'nombre' => 'ver usuario',
             'slug' => 'usuario.show',
@@ -137,7 +137,7 @@ class PermissionInfoSeeder extends Seeder
         $permission_all[] = $permiso->id;
 
          //tabla permissions_role
-         //$roladmin->permissions()->sync($permission_all);
+         $roladmin->permissions()->sync($permission_all);
 
     }
 }
