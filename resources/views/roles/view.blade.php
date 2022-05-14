@@ -79,7 +79,7 @@
                             @endforeach
                             <hr>
 
-                            <a class="btn btn-success" href="{{route('role.edit', $id)}}">Editar</a>
+                            <a class="btn btn-success" href="{{route('role.edit', $role->id)}}">Editar</a>
                             <a class="btn btn-primary" href="{{route('role.index')}}">Volver</a>
                         </div>
 
