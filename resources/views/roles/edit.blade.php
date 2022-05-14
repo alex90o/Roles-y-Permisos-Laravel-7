@@ -10,10 +10,10 @@
                 </div>
 
                 <div class="card-body">
-                @include('custom.message') 
+                @include('custom.message')
 
                     <form action="{{ route('role.update', $role->id )}}" method="post">
-                    @csrf    
+                    @csrf
                     @method('PUT')
 
                         <div class="container">
@@ -28,10 +28,7 @@
                             </div>
 
                             <div class="form-group">
-                                <textarea class="form-control" placeholder="Descripción" id="descripcion"
-                                    name="descripcion" rows="3" >
-                                    {{old('descripcion', $role->descripcion)}}
-                                </textarea>
+                                <textarea class="form-control" placeholder="Descripción" id="descripcion" name="descripcion" rows="3" >{{old('descripcion', $role->descripcion)}}</textarea>
                             </div>
                             <hr>
                             <h3>Acceso Completo</h3>
@@ -62,16 +59,16 @@
 
                             @foreach($permisos as $permiso)
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" 
+                                <input type="checkbox" class="custom-control-input"
                                 id="permiso_{{$permiso->id}}"
                                 value="{{ $permiso->id}}" name="permiso[]"
-                                
+
                                 @if(is_array (old('permiso')) && in_array("$permiso->id", old ('permiso')))
                                 checked
                                 @elseif(is_array ($permiso_rol) && in_array("$permiso->id", $permiso_rol))
                                 checked
                                 @endif>
-                               
+
                                 <label class="custom-control-label" for="permiso_{{$permiso->id}}">
                                     {{ $permiso->id}}
                                     -

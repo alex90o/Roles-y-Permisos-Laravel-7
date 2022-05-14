@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        
+
             <div class="card">
                 <div class="card-header">
                     <h2>Lista de Roles</h2>
@@ -14,8 +14,8 @@
                     <a href="{{route('role.create')}}"
                     class="btn btn-primary float-right"
                         >Crear</a>
-                    <br><br>    
-   
+                    <br><br>
+
                     <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
@@ -29,7 +29,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+
                                 @foreach ($roles as $role)
                                 <tr>
                                 <th scope="row">{{$role->id}}</th>
@@ -39,19 +39,25 @@
                                 <td>{{$role['full-access']}}</td>
                                 <td><a class="btn btn-info" href="{{route('role.show',$role->id)}}">ver</a></td>
                                 <td><a class="btn btn-success" href="{{route('role.edit',$role->id)}}">editar</a></td>
-                                <td><a class="btn btn-danger" href="{{route('role.destroy',$role->id)}}">eliminar</a></td>
+                                <td>
+                                    <form action="{{route('role.destroy',$role->id)}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger">eliminar</button>
+                                    </form>
+                                </td>
                                 </tr>
                                 @endforeach
 
-                            
-            
+
+
                         </tbody>
                     </table>
                     </div>
-                    {{$roles->links()}} 
+                    {{$roles->links()}}
                 </div>
             </div>
-       
+
     </div>
 </div>
 @endsection
